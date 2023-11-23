@@ -90,14 +90,16 @@ const erro1 = []
       nome: false,
       email: false,
       genero: false,
-      estados: false
+      estados: false,
+      cidade: false
       }
       
       
       
       const expressoes = {
       nome : /^[a-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑA-Z]{2,}\s[a-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑA-Z]{2,}$/ ,
-      email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
+      email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+      cidade :/^[a-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑA-Z]{2,}\s[a-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑA-Z]{2,}/
       }
 
 
@@ -136,8 +138,15 @@ const erro1 = []
       }else {
         campos["estados"] = true
       }
+     
+      if(expressoes.cidade.test(Cidade)){
+        campos["cidade"] = true
+      }else{
+        campos["cidade"] = false
+        erro1.push( `<p> O campo [Cidade] deve ser preenchido corretamente </p>`)
+      }
 
-      if(campos.nome && campos.email && campos.genero && campos.estados){
+      if(campos.nome && campos.email && campos.genero && campos.estados && campos.cidade){
         try {
           //if (!Nome || !Email || !Genero || !Estado) throw new Error('Pet and owner names required');
           await sql`INSERT INTO usuarios (Nome, Email, Genero, Estado, Cidade, Receber_contato) VALUES (${Nome}, ${Email}, ${Genero} , ${Estado}, ${Cidade}, ${request.body.contato});`;
