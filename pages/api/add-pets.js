@@ -152,7 +152,7 @@ const erro1 = []
             <p>Email: ${Email} </p>
             <p>Genero: ${Genero} </p>
             <p>Localidade: ${Cidade}, ${Estado} </p>
-            <a href="http://127.0.0.1:5500/index.html">Pagina que lista os cadastro</a>
+            <a href="https://listar.vercel.app/">Pagina que lista os cadastro</a>
         </body>
         </html>`
         
@@ -160,7 +160,7 @@ const erro1 = []
       }else{
         let erro = `
         <h1> Ops, encontramos algum problema! </h1>
-        <a href="http://127.0.0.1:5500/index.html">Voltar para o formulario</a>
+        <a href="https://teste-sigma-eight-67.vercel.app/">Voltar para o formulario</a>
 
         `
         for (let i = 0; i < erro1.length; i++) {
